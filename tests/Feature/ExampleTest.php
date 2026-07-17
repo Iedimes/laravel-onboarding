@@ -28,4 +28,3 @@ class ExampleTest extends TestCase
             ]);
     }
 }
-
