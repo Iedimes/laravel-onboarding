@@ -11,6 +11,7 @@ Este documento define las reglas de juego, el stack tecnológico y las convencio
 - **Base de Datos:** SQLite (para desarrollo local y pruebas automatizadas)
 - **Front-end:** Vite & npm (para gestión de assets)
 - **Linter/Code Style:** Laravel Pint
+- **Type Checker:** Larastan / PHPStan
 - **Testing Framework:** PHPUnit
 
 ---
@@ -24,9 +25,11 @@ Cualquier cambio en el código debe seguir estrictamente este flujo de trabajo:
    - `feat/nombre-tarea` (para nuevas características)
    - `fix/nombre-tarea` (para corregir fallos)
    - `refactor/nombre-tarea` (para mejoras en el código sin cambiar comportamiento)
-3. **Calidad antes de subir:** Antes de realizar un `push` de la rama, es obligatorio correr los tests locales y el corrector de estilo:
-   - `php artisan test`
-   - `php vendor/bin/pint --test` (o `./vendor/bin/pint --test` en Unix)
+3. **Calidad antes de subir:** Antes de realizar un `push` de la rama, es obligatorio correr todos los chequeos locales en orden:
+   - **Estilo:** `php vendor/bin/pint --test`
+   - **Tipos (PHPStan):** `php vendor/bin/phpstan analyse` (o `./vendor/bin/phpstan analyse` en Unix)
+   - **Seguridad:** `composer audit`
+   - **Tests y Cobertura:** `php artisan test --coverage --min=60` (necesita driver de cobertura como PCOV o Xdebug localmente)
 4. **Pull Requests (PR):**
    - Subir la rama a GitHub y crear un Pull Request apuntando a `main`.
    - Esperar a que el flujo de integración continua (**Laravel CI** en GitHub Actions) termine y dé un resultado exitoso (check verde ✅).

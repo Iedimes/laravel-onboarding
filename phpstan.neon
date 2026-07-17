@@ -1,0 +1,11 @@
+includes:
+    - vendor/nunomaduro/larastan/extension.neon
+
+parameters:
+    paths:
+        - app/
+        - config/
+        - routes/
+
+    # Level 5 is a balanced level to check types, properties, and method calls without being too strict initially
+    level: 5
