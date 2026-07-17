@@ -60,5 +60,7 @@ jobs:
     - name: Run PHPStan (Larastan)
       run: ./vendor/bin/phpstan analyse --error-format=github
     - name: Run Security Audit (Composer Audit)
-      run: composer audit || echo "Warning: Vulnerabilities found in dependencies. Consider upgrading to Laravel 11+."
+      run: |
+        composer audit || echo "Warning: Vulnerabilities found in dependencies. Consider upgrading to Laravel 11+."
+
 
