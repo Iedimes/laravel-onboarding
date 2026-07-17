@@ -22,7 +22,6 @@ Route::get('/greeting', function () {
     return response()->json([
         'status' => 'success',
         'message' => '¡Hola! Laravel está funcionando correctamente.',
-        'timestamp' => now()->toIso8601String()
+        'timestamp' => now()->toIso8601String(),
     ]);
 });
-
